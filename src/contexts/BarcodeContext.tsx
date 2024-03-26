@@ -1,3 +1,4 @@
+import { getBarcodes, setBarcodes } from "../functions/barcode.function";
 import { getWebSocketURL } from "../functions/websocket.function";
 import { IBarcodeItem } from "../interfaces/barcode.interface";
 import { createContext, useEffect, useState } from "react";
@@ -46,7 +47,9 @@ export default ({ children }: any) => {
     y: 0,
     z: 0,
   });
-  const [barcodeItems, setBarcodeItems] = useState<IBarcodeItem[]>([]);
+  const [barcodeItems, setBarcodeItems] = useState<IBarcodeItem[]>(
+    getBarcodes()
+  );
 
   useEffect(() => {
     const barcodes = new ROSLIB.Topic({
@@ -86,6 +89,7 @@ export default ({ children }: any) => {
   }, [ros]);
 
   useEffect(() => {
+    setBarcodes(barcodeItems);
     console.log(barcodeItems);
   }, [barcodeItems]);
 
