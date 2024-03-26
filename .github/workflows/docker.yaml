@@ -8,8 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment:
-      name: onpremise-3d
 
     steps:
       - name: Checkout Code
