@@ -1,39 +1,20 @@
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { useRef, useMemo, useState } from "react";
+import { useRef, MutableRefObject, ReactElement, Fragment } from "react";
 import useBarcode from "../../hooks/useBarcode";
 import { useFrame } from "@react-three/fiber";
+import useModel from "../../hooks/useModel";
 
-export default function Robot3D() {
+export default function Robot3D(): ReactElement {
+  const meshRef: MutableRefObject<any> = useRef();
   const { robotLocation } = useBarcode();
-
-  const meshRef: any = useRef();
-  const [robotModel, setRobotModel] = useState(null);
-
-  useMemo(() => {
-    const loader = new GLTFLoader();
-    loader.load(
-      "/models/robotModel.glb",
-      (gltf: any) => {
-        console.log("Robot model loaded:", gltf);
-        setRobotModel(gltf.scene);
-      },
-      (gltf: any) => {
-        console.log("Robot model loading:", gltf);
-      },
-      (error) => {
-        console.error("Error loading the 3D model:", error);
-      },
-    );
-  }, []);
+  const { robotModel } = useModel();
 
   useFrame(() => {
     if (!meshRef.current || !robotModel) return;
-
     meshRef.current.updateMatrixWorld();
   });
 
   if (!robotModel) {
-    return null;
+    return <Fragment />;
   }
 
   return (

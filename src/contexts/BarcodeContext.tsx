@@ -1,28 +1,33 @@
+import { getWebSocketURL } from "../functions/websocket.interface";
+import { IBarcodeItem } from "../interfaces/barcode.interface";
 import { createContext, useEffect, useState } from "react";
 import ROSLIB from "roslib";
-import { IBarcodeItem } from "../interfaces/barcode.interface";
 
 export const BarcodeContext: any = createContext<any>(null);
 
 // eslint-disable-next-line
 export default ({ children }: any) => {
   const [ros, setRos] = useState<ROSLIB.Ros | null>(null);
+  const [connectionStatus, setConnectionStatus] = useState<boolean | null>(
+    null
+  );
 
   useEffect(() => {
     const rosClient: ROSLIB.Ros | null = new ROSLIB.Ros({
-      url: "",
+      // url: "ws://172.16.44.198:9091",
+      url: getWebSocketURL(),
     });
 
     setRos(rosClient);
 
     rosClient?.on("connection", function () {
-      console.log("Connected to websocket server.");
+      setConnectionStatus(true);
     });
-    rosClient?.on("error", function (error) {
-      console.log("Error connecting to websocket server: ", error);
+    rosClient?.on("error", function () {
+      setConnectionStatus(false);
     });
     rosClient?.on("close", function () {
-      console.log("Connection to websocket server closed.");
+      setConnectionStatus(false);
     });
 
     return () => {
@@ -149,6 +154,7 @@ export default ({ children }: any) => {
   return (
     <BarcodeContext.Provider
       value={{
+        connectionStatus,
         robotLocation,
         setRobotLocation,
         barcodeItems,

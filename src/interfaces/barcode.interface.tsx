@@ -12,6 +12,7 @@ export interface IBarcodeItem {
 }
 
 export interface IuseBarcode {
+  connectionStatus: boolean | null;
   robotLocation: any;
   setRobotLocation: any;
   barcodeItems: any;
