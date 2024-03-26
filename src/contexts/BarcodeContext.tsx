@@ -1,4 +1,4 @@
-import { getWebSocketURL } from "../functions/websocket.interface";
+import { getWebSocketURL } from "../functions/websocket.function";
 import { IBarcodeItem } from "../interfaces/barcode.interface";
 import { createContext, useEffect, useState } from "react";
 import ROSLIB from "roslib";

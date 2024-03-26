@@ -15,7 +15,7 @@ export default function InputText({
     <label className="flex items-center gap-2">
       <p>{label}</p>
       <input
-        className="border border-slate-400 rounded h-8 p-1"
+        className="border border-slate-300 rounded h-8 p-1"
         type="text"
         value={value}
         onChange={onChange}

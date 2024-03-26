@@ -15,7 +15,7 @@ export default function ConnectionStatus(): ReactElement {
             : "bg-red-500"
         }`}
       />
-      <p className="text-sm">
+      <p className="text-xs">
         {connectionStatus === null
           ? "Pending"
           : connectionStatus

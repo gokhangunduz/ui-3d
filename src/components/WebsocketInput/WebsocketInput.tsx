@@ -3,7 +3,7 @@ import InputText from "../InputText/InputText";
 import {
   getWebSocketURL,
   setWebSocketURL,
-} from "../../functions/websocket.interface";
+} from "../../functions/websocket.function";
 
 export default function WebsocketInput(): ReactElement {
   const [value, setValue] = useState<string>(getWebSocketURL());
