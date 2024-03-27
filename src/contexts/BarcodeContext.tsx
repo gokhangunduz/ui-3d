@@ -141,7 +141,8 @@ export default ({ children }: any) => {
                 x: prevData[prevData.length - 1]?.waypoint?.x,
                 y: prevData[prevData.length - 1]?.waypoint?.y,
                 z: newBarcode.waypoint.z,
-                yaw: prevData[prevData.length - 1]?.waypoint?.yaw,
+                // yaw: prevData[prevData.length - 1]?.waypoint?.yaw,
+                yaw: prevData[0]?.waypoint?.yaw,
               },
             },
           ];

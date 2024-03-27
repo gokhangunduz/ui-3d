@@ -88,7 +88,7 @@ export default function Machine3D({ item }: IMachine3D) {
         <group>
           {/* Front Face */}
           <Html
-            className="relative inset-0 flex h-full w-full flex-col items-center justify-center"
+            className="relative inset-0 flex h-full w-full flex-col items-center justifcony-center"
             distanceFactor={1.5}
             position={[0, 0.1, -0.301]}
             transform
