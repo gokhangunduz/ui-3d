@@ -1,6 +1,6 @@
 {
   "name": "ui-3d",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "private": true,
   "dependencies": {
     "@react-three/drei": "^9.74.11",
