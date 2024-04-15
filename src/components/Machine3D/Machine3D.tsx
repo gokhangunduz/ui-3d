@@ -71,7 +71,7 @@ export default function Machine3D({ item }: IMachine3D) {
       ]}
       rotation={[0, item?.waypoint?.yaw || 0, 0]}
     >
-      <boxBufferGeometry args={[0.6, 0.6, 0.6]} />
+      <boxGeometry args={[0.6, 0.6, 0.6]} />
       <meshNormalMaterial
         transparent={
           findBarcodeInput
